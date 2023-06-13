@@ -28,7 +28,7 @@ query: |
       | where TimeGenerated > ago(queryperiod)
       | mv-expand AssignedRoles
       | where AssignedRoles matches regex 'Admin'
-      | summarize by tolower(AccountUPN));
+      | summarize by AccountUPN);
   AuditLogs
   | where TimeGenerated > ago(queryfrequency)
   | where Category =~ "UserManagement"
@@ -68,3 +68,5 @@ entityMappings:
         columnName: IP
 version: 1.0.7
 kind: Scheduled
+
+
